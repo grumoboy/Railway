@@ -1,20 +1,8 @@
-<?
-// Страница авторизации
 
-// Функция для генерации случайной строки
-function generateCode($length=6) {
-    $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHI JKLMNOPRQSTUVWXYZ0123456789";
-    $code = "";
-    $clen = strlen($chars) - 1;
-    while (strlen($code) < $length) {
-            $code .= $chars[mt_rand(0,$clen)];
-    }
-    return $code;
-}
+<?
 
 // Соединямся с БД
-$link=mysqli_connect("localhost", "root", '');
-
+$link=mysqli_connect("localhost", "root", '','mydb');
 if(isset($_POST['submit']))
 {
     // Вытаскиваем из БД запись, у которой логин равняеться введенному
@@ -22,37 +10,67 @@ if(isset($_POST['submit']))
     $data = mysqli_fetch_assoc($query);
 
     // Сравниваем пароли
-    if($data['user_password'] === md5(md5($_POST['password'])))
+    if($data['user_password'] == $_POST['password'])
     {
-        // Генерируем случайное число и шифруем его
-        $hash = md5(generateCode(10));
-
-        if(!empty($_POST['not_attach_ip']))
-        {
-            // Если пользователя выбрал привязку к IP
-            // Переводим IP в строку
-            $insip = ", user_ip=INET_ATON('".$_SERVER['REMOTE_ADDR']."')";
-        }
-
-        // Записываем в БД новый хеш авторизации и IP
-        mysqli_query($link, "UPDATE users SET user_hash='".$hash."' ".$insip." WHERE user_id='".$data['user_id']."'");
-
         // Ставим куки
-        setcookie("id", $data['user_id'], time()+60*60*24*30);
-        setcookie("hash", $hash, time()+60*60*24*30,null,null,null,true); // httponly !!!
-
+  //      setcookie("id", $data['user_id'], time()+60*60*24*30);
+      //  setcookie("hash", $hash, time()+60*60*24*30,null,null,null,true); // httponly !!!
         // Переадресовываем браузер на страницу проверки нашего скрипта
-        header("Location: check.php"); exit();
+         header("Location: Admin_menu.php"); exit();
     }
     else
     {
-        print "Вы ввели неправильный логин/пароль";
+      echo "<script type='text/javascript'>
+      alert('Вы ввели неправильный логин/пароль');
+      </script>";
+
     }
-}
+  }
+
 ?>
-<form method="POST">
-Логин <input name="login" type="text"><br>
-Пароль <input name="password" type="password"><br>
-Не прикреплять к IP(не безопасно) <input type="checkbox" name="not_attach_ip"><br>
-<input name="submit" type="submit" value="Войти">
-</form>
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/index.css">
+
+    <title>Авторизация</title>
+  </head>
+  <body>
+
+
+    <div class="mainblock">
+      <div id="login-form">
+        <h1>Авторизация на сайте</h1>
+
+        <fieldset>
+            <form action="check.php" method="POST">
+                <div class="errlog">Логин или пароль введены не верно</div>
+                <input type="text" name="login" required value="Логин"
+                onBlur="if(this.value=='')this.value='Логин'"
+                onFocus="if(this.value=='Логин')this.value='' ">
+                <input type="password" name="password" required value="Пароль"
+                onBlur="if(this.value=='')this.value='Пароль'"
+                onFocus="if(this.value=='Пароль')this.value='' ">
+                <!-- <div class="input-group margin-bottom-sm">
+                <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i></span>
+                <input class="form-control" type="text" placeholder="Email address">
+                </div>
+                <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-key fa-fw" aria-hidden="true"></i></span>
+                <input class="form-control" type="password" placeholder="Password">
+                </div> -->
+                <input name="submit" type="submit" value="ВОЙТИ">
+            </form>
+        </fieldset>
+
+    </div>
+    </div>
+    <script src="js/jquery-2.0.3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

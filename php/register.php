@@ -9,6 +9,7 @@
   </head>
   <body>
     <?
+
 // Страница регистрации нового пользователя
 // Соединямся с БД
 $link=mysqli_connect('localhost', 'root', '');
@@ -28,7 +29,7 @@ if(isset($_POST['submit']))
     $query = mysqli_query($link, "SELECT COUNT(user_id) FROM users WHERE user_login='".mysqli_real_escape_string($link, $_POST['login'])."'");
     if(mysql_num_rows($query)>0)
     {
-        $err[] = "Пользователь с таким логином уже существует в базе данных";
+          array_push($err,  "Пользователь с таким логином уже существует в базе данных");
     }
     // Если нет ошибок, то добавляем в БД нового пользователя
     if(count($err) == 0)

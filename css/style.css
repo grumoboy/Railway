@@ -1,52 +1,3 @@
-body{
-  background-color: #e8e4f3;
-  font-family: "Lato";
-  font-weight: 300;
-  font-size:16px;
-  color: #555;
-
--webkit-font-smoothing: antialiased; /* Шрифт гладкий на моб устр*/
--webkit-overflow-scrolling: touch; /* Сролинг тачем*/
-
-}
-h1, h2, h3, h4, h5, h6{
-  font-family:"Raleway";
-  font-weight:  400;
-  color: #000;
-}
-h6{
-  color: #948282;
-}
-p{
-  font-size: 20pt;
-  padding: 10px;
-  line-height: 28px;
-  margin: 0 !important;
-}
-form{
-}
-.centered{
-  text-align: center;
-}
-
-b{
-  display: block;
-}
-input{
-  display: block;
-}
-a{
-  color: #f85c37;
-}
-a:hover, a:focus{
-  color: #7b7b7b;
-  text-decoration: none;
-  outline: 0; /* Стиль границ и обводки блока*/
-}
-.mainblock{
-  min-width: 300px;
-  margin: 20px 20%;
-}
 
 h1 { margin: 0; }
 
@@ -73,6 +24,14 @@ input {
 
 input[type="submit"] { cursor: pointer; }
 
+.clearfix { *zoom: 1; }
+.clearfix:before, .clearfix:after {
+	content: "";
+	display: table;
+}
+.clearfix:after { clear: both; }
+
+/* ---------- LOGIN-FORM ---------- */
 
 #login-form {
 	margin: 150px auto;
@@ -84,10 +43,9 @@ input[type="submit"] { cursor: pointer; }
 	border-radius: 5px 5px 0 0;
 	color: #fff;
 	font-size: 14px;
-	padding: 14px 20px;
+	padding: 20px;
 	text-align: center;
 	text-transform: uppercase;
-  font-weight: 700;
 }
 
 #login-form fieldset {
@@ -117,16 +75,14 @@ input[type="submit"] { cursor: pointer; }
 	font-size: 14px;
 }
 
-#login-form input[type="text"],
+#login-form input[type="email"],
 #login-form input[type="password"] {
 	border: 1px solid #dcdcdc;
-	padding: 10px 10px;
-	width: 250px;
-  font-size: 12pt;
-  font-weight: 700;
+	padding: 12px 10px;
+	width: 238px;
 }
 
-#login-form input[type="text"] {
+#login-form input[type="email"] {
 	border-radius: 3px 3px 0 0;
 }
 
@@ -139,16 +95,66 @@ input[type="submit"] { cursor: pointer; }
 	background: #1dabb8;
 	border-radius: 3px;
 	color: #fff;
+	float: right;
 	font-weight: bold;
 	margin-top: 20px;
-	padding: 10px 20px;
+	padding: 12px 20px;
 }
 
 #login-form input[type="submit"]:hover { background: #198d98; }
 
+#login-form footer {
+	font-size: 12px;
+	margin-top: 16px;
+}
 
-.errlog{
-  margin-bottom: 5px;
-  color: red;
-  visibility:    hidden;
+.info {
+	background: #e5e5e5;
+	border-radius: 50%;
+	display: inline-block;
+	height: 20px;
+	line-height: 20px;
+	margin: 0 10px 0 0;
+	text-align: center;
+	width: 20px;
+}
+
+/* ����� ���� vladmaxi, ����� ������� */
+.vladmaxi-top{
+	line-height: 24px;
+	font-size: 11px;
+	background: rgba(0, 0, 0, 0.08);
+	text-transform: uppercase;
+	z-index: 9999;
+	position: fixed;
+	top:0;
+	left:0;
+	width:100%;
+	font-family: calibri;
+	font-size: 13px;
+	box-shadow: 1px 0px 2px rgba(0,0,0,0.2);
+	-webkit-animation: slideOut 0.5s ease-in-out 0.3s backwards;
+}
+@-webkit-keyframes slideOut{
+	0%{top:-30px; opacity: 0;}
+	100%{top:0px; opacity: 1;}
+}
+
+.vladmaxi-top a{
+	padding: 0px 10px;
+	letter-spacing: 1px;
+	color: #333;
+	text-shadow: 0px 1px 1px #fff;
+	display: block;
+	float: left;
+}
+.vladmaxi-top a:hover{
+	background: #fff;
+}
+.vladmaxi-top span.right{
+	float: right;
+}
+.vladmaxi-top span.right a{
+	float: left;
+	display: block;
 }
