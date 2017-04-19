@@ -1,0 +1,49 @@
+body{
+  background-color: #f2f2f2;
+  font-family: "Lato";
+  font-weight: 300;
+  font-size:16px;
+  color: #555;
+
+-webkit-font-smoothing: antialiased; /* Шрифт гладкий на моб устр*/
+-webkit-overflow-scrolling: touch; /* Сролинг тачем*/
+
+}
+h1, h2, h3, h4, h5, h6{
+  font-family:"Raleway";
+  font-weight:  400;
+  color: #000;
+}
+h6{
+  color: #948282;
+}
+p{
+  font-size: 20pt;
+  padding: 10px;
+  line-height: 28px;
+  margin: 0 !important;
+}
+form{
+}
+.centered{
+  text-align: center;
+}
+
+b{
+  display: block;
+}
+input{
+  display: block;
+}
+a{
+  color: #f85c37;
+}
+a:hover, a:focus{
+  color: #7b7b7b;
+  text-decoration: none;
+  outline: 0; /* Стиль границ и обводки блока*/
+}
+.mainblock{
+  min-width: 300px;
+  margin: 20px 20%;
+}

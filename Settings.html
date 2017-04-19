@@ -1,0 +1,310 @@
+<!DOCTYPE HTML>
+<html lang="ru-RU">
+<head>
+<title>
+Настройки 
+</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Language" content="ru">
+
+<link rel="stylesheet" type="text/css" href="css\jquery.minical.plain.css"> 
+<link rel="stylesheet" type="text/css" href="css\maincss.css"> 
+<link rel="stylesheet" type="text/css" href="css\bootstrap.min.css"> 
+<link rel="stylesheet" type="text/css" href="css\bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+<script type="text/javascript"  src="js\jquery-1.12.0.min.js" ></script>
+<script type="text/javascript"  src="js\jquery.minical.plain.js" ></script>
+<script type="text/javascript"  src="js\jquery-1.12.0.min.js" ></script>
+<script type="text/javascript"  src="js\jquery.minical.plain.js" ></script>
+<script type="text/javascript"  src="js\bootstrap.min.js" ></script> 
+<script type="text/javascript">
+ var boolMail, boolPhone ;
+ boolMail=boolPhone=true;
+function ValidMail() {
+    var re = /^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i;
+    var myMail = document.getElementById('email').value;
+    boolMail = re.test(myMail);
+    if (!boolMail) 
+    $('#message').text('Адрес эл. почты введен не правильно!');
+}
+ 
+function ValidPhone() {
+  
+   
+    var re = /^[\d]{2}\ \([\d]{2,3}\)\ [\d]{2,3}-[\d]{2,3}-[\d]{2,3}$/g;
+    var myPhone = document.getElementById('mobilePhone').value;
+    boolPhone = re.test(myPhone);
+    if (!boolPhone) 
+    $('#message').text($('#message').text()+' Номер телефона введен не правильно!');
+}  
+function  inspBool(){
+if((!boolMail)||(!boolPhone)){
+ $('#myModal').modal("show")
+ }
+ }
+ 
+ 
+</script>
+<script type="text/javascript">
+function inspDate(){
+
+  var arrD = $('#dateinp').val().split("-");
+  arrD[1] -= 1;
+	var nowDate= new Date();
+  if ((nowDate.getFullYear() <= arrD[0]) && (nowDate.getMonth() <= arrD[1]) && (nowDate.getDate() <= arrD[2])) {
+    return  alert("Введена некорректная дата!");
+  } 
+ }
+function sendForm(f){
+ $('form#personaldata').submit(function() {
+ alert('Handler for .submit() called.');
+ return false;
+});
+}
+
+function changeHTML(){
+var nowDate = new Date();
+var arrD = $('#dateinp').val().split("-");
+arrD[1] -= 1;
+var chooseDate= new Date(arrD[0],arrD[1],arrD[2]);
+var oneDay=1000*60*60*24;
+var numDay=Math.abs(Math.floor((nowDate.getTime()-chooseDate.getTime())/oneDay));
+
+
+var myUl = $('#changeHTML'); 
+var content = myUl.html();  
+content = ' <div class="divTextSeting">'
++'<label class="col-md-9 "> Ваше ФИО: '
++' '+$('#firstName').val()
++' '+$('#lastName').val()
++' '+$('#patronymic').val()
++'<br>  Дней: '
++ numDay +'</label></div>'; 
+myUl.html(content)
+}
+</script>
+</head>
+<body>
+<!--
+<div id="wrapper">
+ 
+    <ul class="menu">
+        <li class="item1"><a href="#">Friends <span>340</span></a>
+            <ul>
+                <li class="subitem1"><a href="#">Cute Kittens <span>14</span></a></li>
+                <li class="subitem2"><a href="#">Strange “Stuff” <span>6</span></a></li>
+                <li class="subitem3"><a href="#">Automatic Fails <span>2</span></a></li>
+            </ul>
+        </li>
+        <li class="item2"><a href="#">Videos <span>147</span></a>
+            <ul>
+                <li class="subitem1"><a href="#">Cute Kittens <span>14</span></a></li>
+                <li class="subitem2"><a href="#">Strange “Stuff” <span>6</span></a></li>
+                <li class="subitem3"><a href="#">Automatic Fails <span>2</span></a></li>
+            </ul>
+        </li>
+        <li class="item3"><a href="#">Galleries <span>340</span></a>
+            <ul>
+                <li class="subitem1"><a href="#">Cute Kittens <span>14</span></a></li>
+                <li class="subitem2"><a href="#">Strange “Stuff” <span>6</span></a></li>
+                <li class="subitem3"><a href="#">Automatic Fails <span>2</span></a></li>
+            </ul>
+        </li>
+        <li class="item4"><a href="#">Podcasts <span>222</span></a>
+            <ul>
+                <li class="subitem1"><a href="#">Cute Kittens <span>14</span></a></li>
+                <li class="subitem2"><a href="#">Strange “Stuff” <span>6</span></a></li>
+                <li class="subitem3"><a href="#">Automatic Fails <span>2</span></a></li>
+            </ul>
+        </li>
+        <li class="item5"><a href="#">Robots <span>16</span></a>
+            <ul>
+                <li class="subitem1"><a href="#">Cute Kittens <span>14</span></a></li>
+                <li class="subitem2"><a href="#">Strange “Stuff” <span>6</span></a></li>
+                <li class="subitem3"><a href="#">Automatic Fails <span>2</span></a></li>
+            </ul>
+        </li>
+    </ul>
+ 
+</div>
+
+
+<script type="text/javascript">
+$(function() {
+ 
+    var menu_ul = $('.menu > li > ul'),
+        menu_a  = $('.menu > li > a');
+ 
+    menu_ul.hide();
+ 
+    menu_a.click(function(e) {
+        e.preventDefault();
+        if(!$(this).hasClass('active')) {
+            menu_a.removeClass('active');
+            menu_ul.filter(':visible').slideUp('normal');
+            $(this).addClass('active').next().stop(true,true).slideDown('normal');
+        } else {
+            $(this).removeClass('active');
+            $(this).next().stop(true,true).slideUp('normal');
+        }
+    });
+ 
+});
+</script>
+-->
+<div class="centrDiv">
+
+<div class="panel panel-primary" role="alert">
+<div class="panel-heading">Настройки</div>
+<div class="panel-body">
+
+
+ <div class="panel panel-default">
+ <div data-toggle="collapse"  href="#el1" class="panel-heading">
+ <h4 class="panel-title">
+ <label >Личные данные</label>
+ </h4>
+ </div>
+ <div id="el1" class="panel-collapse collapse ">
+ <div id="changeHTML" class="panel-body">
+ 
+<form role="form" id="personaldata" onSubmit="sendForm(this);" action="">
+<div >
+  <div class="divTextSeting">
+  <label class="col-sm-4 " for="#firstName">Фамилия:</label>
+  <input  id="firstName" class="inputStyle" value="Васильев" required aria-required="true"/>
+
+ </div>
+ <div class="divTextSeting">
+
+  <label class="col-sm-4 " for="#lastName" >Имя:</label>
+  <input id="lastName"  class="inputStyle"  value="Василий" required aria-required="true"/>
+
+ </div>
+ <div class="divTextSeting">
+
+  <label class="col-sm-4 " for="#patronymic">Отчество:</label>
+  <input  id="patronymic" class="inputStyle" value="Васильевич" required aria-required="true"/>
+
+ </div>
+  <div class="divTextSeting">
+
+  <label class="col-sm-4 " for=>Мобильный телефон:</label>
+  <input id="mobilePhone" class="inputStyle" type="tel" value="38 (050) 000-00-00" 
+  required pattern="[\d]{2}\ \([\d]{3}\)\ [\d]{2,3}-[\d]{2,3}-[\d]{2,3}" aria-required="true"/>
+
+ </div>
+  <div class="divTextSeting">
+
+  <label class="col-sm-4 ">E-mail:</label>
+  <input id="email" class="inputStyle"  type="email" value="example@mail.ru" 
+  required  aria-required="true"/>
+ </div>
+
+  <div class="divTextSeting" >
+
+	<label class="col-sm-4">Дата: </label>
+	<input  id="dateinp" class="changeDate inputStyle" type="text" >
+	<!--	 <input  id="dateinp" class="inputStyle">-->
+		<img src="images/icon_calendar.png">	
+		<script type="text/javascript">
+	var $date_field = $('input.changeDate');
+	
+	$date_field.minical({
+		date_format: function(date) {
+		var month=(date.getMonth() + 1);
+	    var day=date.getDate();
+		
+	    if( month<10){
+	    month='0'+month;
+	    }
+		if( day<10){
+	    day='0'+day;
+	    }
+	     return [date.getFullYear(),month, day].join("-");
+		}
+	})
+	</script>
+ </div>
+ </div >
+  <button type="submit" class="btn btn-success">Сохранить</button>
+</form>
+ 
+ </div>
+ </div>
+ </div>
+ 
+ <div class="panel panel-default">
+ <div data-toggle="collapse"  href="#sec_body" class="panel-heading">
+ <h4 class="panel-title">
+ <label >Безопастность</label>
+ </h4>
+ </div>
+ <div id="sec_body" class="panel-collapse collapse ">
+ <div class="panel-body">
+ 
+<form role="form">
+<div >
+ <div class="divTextSeting" >
+
+  <label class="col-sm-4 " >Логин :</label>
+  <input class="inputStyle" value="Login">
+
+ </div>
+ <div class="divTextSeting" >
+
+  <label class="col-sm-4 ">Старый пароль:</label>
+  <input class="inputStyle" type="password" value="******">
+ 
+ </div>
+ <div class="divTextSeting" >
+
+  <label class="col-sm-4 ">Новый пароль:</label>
+  <input class="inputStyle" type="password" value="******">
+ 
+ </div>
+ <div class="divTextSeting">
+
+  <label class="col-sm-4 ">Подтверждение:</label>
+  <input class="inputStyle"  type="password" value="******">
+
+ </div>
+
+ 
+ </div >
+<button type="submit" class="btn btn-success">Сохранить</button>
+ </form>
+ 
+ </div>
+ </div>
+ </div>
+ 
+ 
+ <button type="submit" class="btn btn-success"
+ onClick="ValidMail(); ValidPhone(); " data-toggle="modal"  data-target="#myModal">Сохранить</button>
+
+ </div>
+
+
+
+ 
+<div id="myModal" class="modal fade">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header"><button class="close" type="button" data-dismiss="modal">?</button>
+<h4 class="modal-title">Вы уверены что хотите сохранить?</h4>
+</div>
+<div class="modal-footer">
+<button class="btn btn-success" type="button" data-dismiss="modal" onClick="changeHTML();  sendForm();">
+<i class="glyphicon glyphicon-ok"></i> Да</button>
+<button class="btn btn-warning" type="button" data-dismiss="modal">
+<i class="glyphicon glyphicon-remove"></i> Нет</button>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>
