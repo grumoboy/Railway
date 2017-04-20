@@ -1,0 +1,118 @@
+body{
+  background-color: #f2f2f2;
+  font-family: "Lato";
+  font-weight: 300;
+  font-size:16px;
+  color: #555;
+-webkit-font-smoothing: antialiased; /* Шрифт гладкий на моб устр*/
+-webkit-overflow-scrolling: touch; /* Сролинг тачем*/
+
+}
+h1, h2, h3, h4, h5, h6{
+  font-family:"Raleway";
+  font-weight:  400;
+  color: #000;
+}
+h6{
+  color: #948282;
+}
+p{
+  font-size: 20pt;
+  padding: 10px;
+  line-height: 28px;
+  margin: 0 !important;
+}
+
+.li>a{
+  text-align: left;
+  display: block;
+  text-decoration: none !important;
+  font-weight: 700;
+  font-size: 12pt;
+  color: #efefef;
+  padding: 15px 15px 15px 30px;
+  /*padding:  15px auto;*/
+  transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+}
+.li>a:hover{
+  background: rgba(107, 154, 196, 0.52);
+  transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+}
+.menu-right{
+  margin: 7px 5px;
+  float: right;
+}
+.our-btn{
+  background-color: #959595 !important;
+  border-color: #7a7a7a !important;
+}
+.main-block{
+  margin: 70px 100px;
+  min-width: 600px;
+}
+.vmenu{
+  background: #486e91;
+  padding: 0;
+  min-width: 220px;
+  max-width: 220px;
+  height: 400px;
+
+}
+.hr-dash{
+  border-top: #9d9d9d solid 0.1px;
+  margin: auto 5%;
+  /*border-color: #b8b8df;
+  margin: 5px;*/
+}
+.place{
+  border: 1px;
+  border-color: #000;
+  height: 400px;
+  background: #c1c1c1;
+  padding: 20px 10px 30px 20px;
+  /*width: 100%;*/
+}
+.active{
+  /*background: #eb1e1e;*/
+  border-top: 1px solid    #d7dae4;
+  border-bottom: 1px solid #d7dae4;
+  border-left:  10px solid #d7dae4;
+  /*#f47979;*/
+
+}
+.active>a{
+    padding-left: 20px;
+}
+thead{
+  background: #efefef ;
+
+}
+.scrol{
+  margin-top: 50px;
+  max-height: 90%;
+  overflow-y: scroll;
+}
+
+.add, .save{
+  position: absolute;
+  margin: 15px;
+}
+.add{
+  top: 0;
+  left: 0;
+}
+.save{
+  top: 0;
+  right: 0;
+}
+table{
+  font-size: 10pt;
+}
+tr{
+  vertical-align: middle;
+}
+.trash{
+  padding: 0;
+}
