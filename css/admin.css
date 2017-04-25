@@ -8,6 +8,9 @@ body{
 -webkit-overflow-scrolling: touch; /* Сролинг тачем*/
 
 }
+button:focus{
+  outline: 0;
+}
 h1, h2, h3, h4, h5, h6{
   font-family:"Raleway";
   font-weight:  400;
@@ -22,43 +25,75 @@ p{
   line-height: 28px;
   margin: 0 !important;
 }
+.centered{
+  text-align: center;
+}
 
 .li>a{
-  text-align: left;
+  background: #486e91;
+  text-align: center;
   display: block;
   text-decoration: none !important;
   font-weight: 700;
   font-size: 12pt;
   color: #efefef;
-  padding: 15px 15px 15px 30px;
+  padding: 15px;
+  /*padding: 15px 15px 15px 30px;*/
   /*padding:  15px auto;*/
   transition: all 1s ease;
   -webkit-transition: all 1s ease;
+  transform:  translateY(+10px);
 }
+
 .li>a:hover{
-  background: rgba(107, 154, 196, 0.52);
+  background: rgba(107, 154, 196, 1.0);
+  transform:  translateY(0px);
   transition: all 1s ease;
   -webkit-transition: all 1s ease;
 }
+.active>a{
+
+transform:  translateY(0px);
+
+}
+.active>a:hover{
+  background: rgba(107, 154, 196, 1.0);
+  transform:  translateY(0px) !important;
+  transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+}
+
+.container{
+  display: flex;
+  align-items: center;
+  margin: 0 !important;
+}
 .menu-right{
-  margin: 7px 5px;
-  float: right;
+  position:  absolute;
+  /*margin-left: 40%;*/
+  right: 20px;
+  /*float: right;*/
 }
 .our-btn{
   background-color: #959595 !important;
   border-color: #7a7a7a !important;
 }
 .main-block{
-  margin: 70px 100px;
+  margin: 70px 50px 10px 50px;
   min-width: 600px;
 }
 .vmenu{
-  background: #486e91;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  /*background: #486e91;*/
   padding: 0;
-  min-width: 220px;
-  max-width: 220px;
-  height: 400px;
+  /*min-width: 220px;*/
+  /*max-width: 220px;*/
+  /*height: 400px;*/
 
+    transition: all 1s ease;
+    -webkit-transition: all 1s ease;
 }
 .hr-dash{
   border-top: #9d9d9d solid 0.1px;
@@ -67,52 +102,92 @@ p{
   margin: 5px;*/
 }
 .place{
-  border: 1px;
-  border-color: #000;
-  height: 400px;
   background: #c1c1c1;
-  padding: 20px 10px 30px 20px;
-  /*width: 100%;*/
+  padding: 15px 10px 30px 20px;
+  width: 100%;
+  transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+    transform:  translateY(-52px);
 }
-.active{
-  /*background: #eb1e1e;*/
-  border-top: 1px solid    #d7dae4;
-  border-bottom: 1px solid #d7dae4;
-  border-left:  10px solid #d7dae4;
-  /*#f47979;*/
+.place-new{
+  transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+    transform:  translateY(0px)  !important;
+}
+.mainli{
+  display: flex;
+  align-items: baseline;
+  padding: 10px;
+  /*border-radius: 5px;*/
+  width: 80px;
+  transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+}
+.mainli>span{
+  font-family: "Raleway";
+  font-size: 12pt;
+  font-weight: 700;
+}
+.mainli:hover{
+  /*background: #ededed;*/
+  color: #fff;
+  /*border-left:  5px solid #fff;*/
+  /*transition: all 1s ease;
+  -webkit-transition: all 1s ease;*/
+}
 
-}
-.active>a{
-    padding-left: 20px;
-}
 thead{
   background: #efefef ;
-
 }
 .scrol{
-  margin-top: 50px;
+  margin-top: 5px;
   max-height: 90%;
-  overflow-y: scroll;
+  padding: 0 !important;
+  /*overflow-y: scroll;*/
 }
 
-.add, .save{
-  position: absolute;
-  margin: 15px;
-}
 .add{
-  top: 0;
-  left: 0;
-}
-.save{
+  position: absolute;
+  margin: 20px 15px 15px 15px;
   top: 0;
   right: 0;
 }
+
+
 table{
   font-size: 10pt;
 }
 tr{
   vertical-align: middle;
 }
+td{
+  padding: 0px  !important;
+  /*padding-left: 4px !important;*/
+}
 .trash{
   padding: 0;
+}
+input[type="text"]{
+  width: 100%;
+}
+.divTextSeting{
+
+	font-size: 15px;
+	margin-bottom: 10px;
+	border-left: 5px solid #90EE90;
+
+}
+.inputStyle {
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+#editbox{
+  padding: 0 2px;
 }

@@ -1,4 +1,3 @@
-
 <?
 
 // Соединямся с БД
@@ -18,7 +17,18 @@ if(isset($_POST['submit']))
         // Переадресовываем браузер на страницу проверки нашего скрипта
         //  header("Location: Admin_menu.php"); exit();
 
-        exit("<meta http-equiv='refresh' content='0; url= Admin_menu.php?login=".$_POST['login']."'>");
+
+
+  //      echo "
+  //       <script type='text/javascript'>
+  //      $.post(
+  //      'Admin_menu.php',
+  //      {login:'".$_POST['login']."'},
+  //      function(data) {
+  //
+  //      }
+  //  );</script>";
+    exit("<meta http-equiv='refresh' content='0; url= Admin_menu.php?login=".$_POST['login']."'>");
     }
     else
     {

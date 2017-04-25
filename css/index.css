@@ -147,7 +147,7 @@ input[type="submit"] { cursor: pointer; }
 #login-form input[type="submit"]:hover { background: #198d98; }
 
 
-.errlog{
+#errlog{
   margin-bottom: 5px;
   color: red;
   visibility:    hidden;
